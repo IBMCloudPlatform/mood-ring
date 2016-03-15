@@ -1,0 +1,3 @@
+NAMESPACE=test1
+ANALYZER_CCS_BIND_SRV=Tone_Analyzer-i4
+TWITTER_CCS_BIND_SRV="Insights for Twitter-hl"
