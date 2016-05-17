@@ -4,7 +4,9 @@ from elasticsearch import Elasticsearch, exceptions
 from datetime import datetime
 import logging
 from logging import StreamHandler
+import urllib3
 
+urllib3.disable_warnings()
 # Define the base logger
 logging.getLogger("analyzer").setLevel(logging.DEBUG)
 log = logging.getLogger("analyzer")
@@ -127,7 +129,7 @@ if __name__ == '__main__':
     pwd = os.getenv('VCAP_SERVICES_TONE_ANALYZER_0_CREDENTIALS_PASSWORD')
     url = os.getenv('VCAP_SERVICES_TONE_ANALYZER_0_CREDENTIALS_URL')
     short_url = url[8:]
-    tone_analyzer_ep = "https://" + id + ":" + pwd + "@" + short_url + "/v3/tone?version=2015-02-11"
+    tone_analyzer_ep = "https://" + id + ":" + pwd + "@" + short_url + "/v3/tone?version=2016-02-11"
 
     log.info("Starting analyzer tone_analyzer_ep: %s ELASTICSEARCH_EP: %s", tone_analyzer_ep, ELASTICSEARCH_EP)
     app.run(host='0.0.0.0', port=int(PORT))
